@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 )
 
@@ -14,10 +15,12 @@ var (
 	bkt    string
 )
 
+var log = logrus.New()
+
 func errCheck(err error, s string) {
 
 	if err != nil {
-		fmt.Println(s, err)
+		log.Errorln(s, err)
 		os.Exit(1)
 	}
 
@@ -49,12 +52,17 @@ func initOSS() {
 
 }
 
-func putToOss(objKey, localPath string) error {
+func putToOss(objKey, localPath string, index int, ulChan chan ulOss, errChan chan error) {
 
 	err := bucket.PutObjectFromFile(objKey, localPath)
-	errCheck(err, "Put Object error!")
 
-	return nil
+	if err != nil {
+		errChan <- err
+	} else {
+
+		path := fmt.Sprintf("LocalPath:%s --> OssPath:%s", localPath, objKey)
+		ulChan <- ulOss{path, index}
+	}
 
 }
 
@@ -72,7 +80,7 @@ func getFilelist(path string) []string {
 	})
 
 	if err != nil {
-		fmt.Printf("filepath returned %v\n", err)
+		log.Errorf("filepath returned %v\n", err)
 		return nil
 	}
 

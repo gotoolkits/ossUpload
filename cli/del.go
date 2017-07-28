@@ -1,9 +1,5 @@
 package cli
 
-import (
-	"fmt"
-)
-
 func Del(objName string) {
 
 	initOSS()
@@ -11,6 +7,6 @@ func Del(objName string) {
 
 	errCheck(err, "del the object error!")
 
-	fmt.Println("delete a object name:", objName)
+	log.Infoln("delete a object name:", objName)
 
 }
