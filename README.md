@@ -66,5 +66,18 @@
        }
     }
 
-## TODO
- >   goroutine 实现多线程并行上传
+## Todo-Finish
+ >   1) goroutine 实现多线程并行上传 ［已完成］
+ >   2) 日志标准化 ［已完成］
+ 
+     ERRO[0000] Upload error happen: open /tmp/com.apple.launchd.4gkZ1Fghle/org.macosforge.xquartz:0: operation not supported on socket 
+     ERRO[0000] Upload error happen: open /tmp/com.apple.launchd.Aar8VHjSaL/Listeners: operation not supported on socket 
+     ERRO[0000] Upload error happen: open /tmp/com.apple.launchd.IN2K6pG99U/Render: operation not supported on socket 
+     INFO[0000] 26: LocalPath:/tmp/wifi-OBZk1X.log --> OssPath:yuch/wifi-OBZk1X.log Upload sucessful! 
+     INFO[0000] 31: LocalPath:/tmp/wifi-XgtVzJ.log --> OssPath:yuch/wifi-XgtVzJ.log Upload sucessful! 
+     INFO[0000] 5: LocalPath:/tmp/aaa/bb/cc.log --> OssPath:yuch/aaa/bb/cc.log Upload sucessful! 
+     INFO[0003] 37: LocalPath:/tmp/wifi-gICNAD.log --> OssPath:yuch/wifi-gICNAD.log Upload sucessful! 
+     INFO[0002] 19: LocalPath:/tmp/wifi-1EPROn.log --> OssPath:yuch/wifi-1EPROn.log Upload sucessful! 
+     INFO[0009] 20: LocalPath:/tmp/wifi-4vVbMA.log --> OssPath:yuch/wifi-4vVbMA.log Upload sucessful! 
+     INFO[0009] 21: LocalPath:/tmp/wifi-AWCdIW.log --> OssPath:yuch/wifi-AWCdIW.log Upload sucessful! 
+
